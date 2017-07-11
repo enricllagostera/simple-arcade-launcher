@@ -2,8 +2,7 @@ const { ipcRenderer } = require('electron');
 const Mustache = require('mustache');
 const anime = require('animejs');
 
-var GamepadController = require('gamepadcontroller');
-const gamepad1 = new GamepadController(0);
+
 
 let gamesData = ipcRenderer.sendSync('load-games-data');
 let currentGameIndex = 0;
@@ -11,7 +10,13 @@ let currentGameIndex = 0;
 var loading = {};
 var inGame = false;
 
+/* Gamepad support. Tested only on Xbox 360 controllers. */
+
 // use: http://html5gamepad.com/ to test and determine your controller ids
+
+var GamepadController = require('gamepadcontroller');
+const gamepad1 = new GamepadController(0);
+
 gamepad1.onButtonRelease(gamesData.select_button_id, (e) => {
     if (inGame) {
         return;
@@ -84,8 +89,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         easing: 'easeOutCubic'
     });
 
-
-    document.querySelector('body').setAttribute("style", "background-image: url(" + gamesData.bg_url + ")");
+    // prepare the Bg and HTML markup for each game
+    document.querySelector('body').setAttribute("style", "background-image: url(" + gamesData.bg_url +
+        "); background-color: " + gamesData.bg_color + ";");
     let games = Mustache.render(
         "{{#games}}" +
         "<div class='game' id='{{id}}'>" +
@@ -97,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         "{{/games}}",
         gamesData);
 
-
+    // move each game's info to their proper starting position
     document.querySelector('#allGames').innerHTML = games;
     var allGameElements = document.querySelectorAll('div.game');
     for (let i = 0; i < allGameElements.length; i++) {
@@ -156,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function ChooseGame() {
+    // this is used to block inputs
     inGame = true;
     // send a message to the main process when loading appears
     ipcRenderer.send('start-game', currentGameIndex); // prints "pong"

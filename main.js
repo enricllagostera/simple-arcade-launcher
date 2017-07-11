@@ -3,7 +3,9 @@
 const { app, BrowserWindow } = require('electron');
 const storage = require('electron-json-storage');
 const { ipcMain } = require('electron');
-//require('electron-debug')({ showDevTools: true });
+const { Menu } = require('electron');
+const { shell } = require('electron');
+require('electron-debug')({ showDevTools: true });
 const { execFile } = require('child_process');
 
 var mainWindow = null;
@@ -12,20 +14,27 @@ var gamesData = {};
 /* APP EVENTS */
 
 app.on('ready', () => {
+    prepareMainMenu();
+
+    // only loads the app windows after game data is loaded from JSON
     storage.get('config', function (error, data) {
         if (error) {
-            console.log(error);
+            // hard quit if data is not loaded
+            app.quit();
             throw error;
         }
-        // console.log(data);
+        if (data.arcade_name == undefined) {
+            console.log("A valid config file was not found, loading example file.")
+            data = exampleConfigFile();
+            storage.set('config', data);
+        }
         gamesData = data;
-        //event.returnValue = gamesData;
 
         // main window setup
         mainWindow = new BrowserWindow({
             width: gamesData.screen_width,
             height: gamesData.screen_height,
-            backgroundColor: '#000',
+            backgroundColor: gamesData.bg_color,
             fullscreen: gamesData.is_fullscreen,
             autoHideMenuBar: true
         });
@@ -61,7 +70,7 @@ ipcMain.on('start-game', (event, arg) => {
         folder = '/';
     }
     // runs the game's executable file (must match the patter 'id.exe')
-    ExecProcess(gamesData.games[arg].path + folder + gamesData.games[arg].id + ".exe", () => {
+    execProcess(gamesData.games[arg].path + folder + gamesData.games[arg].id + ".exe", () => {
         mainWindow.restore();
         // notifies renderer when game finishes
         event.sender.send('game-finished');
@@ -70,12 +79,67 @@ ipcMain.on('start-game', (event, arg) => {
 
 /* HELPER FUNCTIONS */
 
-function ExecProcess(pathExe, cb) {
+function execProcess(pathExe, cb) {
     let child = execFile(pathExe);
     // when the game process ends, do something
     child.on('exit', (code, signal) => {
         cb();
     });
+}
+
+function prepareMainMenu() {
+    const template = [
+        {
+            label: 'Setup',
+            submenu: [
+                {
+                    label: 'Show config file in Explorer',
+                    accelerator: 'CmdOrCtrl+S',
+                    click(item, focusedWindow) {
+                        console.log("Preparing to show config file.");
+                        storage.has('config', (error, hasKey) => {
+                            if (error) throw error;
+                            if (!hasKey) {
+                                storage.set('config', exampleConfigFile(), () => {
+                                    console.log("Creating and showing example config file.");
+                                    shell.showItemInFolder(app.getPath('userData') + '/storage/config.json');
+                                });
+                                return;
+                            }
+                            console.log("Showing config file in Explorer.");
+                            shell.showItemInFolder(app.getPath('userData') + '/storage/config.json');
+                        });
+                    }
+                }
+            ]
+        }
+    ];
+    let mainMenu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(mainMenu);
+}
+
+function exampleConfigFile() {
+    return {
+        "arcade_name": "Example arcade name",
+        "bg_color": "#ff0",
+        "bg_url": "",
+        "select_button_id": 0,
+        "exit_button_id": 1,
+        "left_button_id": 14,
+        "right_button_id": 15,
+        "stick_index": 0,
+        "screen_width": 1200,
+        "screen_height": 650,
+        "is_fullscreen": false,
+        "games": [
+            {
+                "id": "game_unique_id",
+                "name": "Example game",
+                "info": "Any info you want.",
+                "path": "an_absolute_path"
+            }
+        ]
+    };
 }
 
 
