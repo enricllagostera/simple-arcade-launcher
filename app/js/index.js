@@ -165,12 +165,14 @@ function ChooseGame() {
     // this is used to block inputs
     inGame = true;
     // send a message to the main process when loading appears
-    ipcRenderer.send('start-game', currentGameIndex); // prints "pong"
     anime({
         targets: '#loading',
         translateY: [(gamesData.screen_height + 500), 0],
         duration: 1000,
-        easing: 'easeOutCubic'
+        easing: 'easeOutCubic',
+        complete: () => {
+            ipcRenderer.send('start-game', currentGameIndex); // prints "pong"
+        }
     });
 }
 
