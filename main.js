@@ -5,7 +5,7 @@ const storage = require('electron-json-storage');
 const { ipcMain } = require('electron');
 const { Menu } = require('electron');
 const { shell } = require('electron');
-require('electron-debug')({ showDevTools: true });
+// require('electron-debug')({ showDevTools: true });
 const { execFile } = require('child_process');
 
 var mainWindow = null;
@@ -64,13 +64,8 @@ ipcMain.on('load-games-data', (event, arg) => {
 
 // when receives a game-chosen method from the renderer process
 ipcMain.on('start-game', (event, arg) => {
-    // process last dash if needed
-    let folder = '';
-    if (gamesData.games[arg].path[gamesData.games[arg].path.length - 1] != '/') {
-        folder = '/';
-    }
-    // runs the game's executable file (must match the patter 'id.exe')
-    execProcess(gamesData.games[arg].path + folder + gamesData.games[arg].id + ".exe", () => {
+    // runs the game's executable file
+    execProcess(gamesData.games[arg].exec_path, () => {
         mainWindow.restore();
         // notifies renderer when game finishes
         event.sender.send('game-finished');
@@ -136,7 +131,8 @@ function exampleConfigFile() {
                 "id": "game_unique_id",
                 "name": "Example game",
                 "info": "Any info you want.",
-                "path": "an_absolute_path"
+                "exec_path": "an_absolute_path_to_executable",
+                "cover_path": "an_absolute_path_to_cover"
             }
         ]
     };

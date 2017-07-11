@@ -2,19 +2,17 @@ const { ipcRenderer } = require('electron');
 const Mustache = require('mustache');
 const anime = require('animejs');
 
-
-
 let gamesData = ipcRenderer.sendSync('load-games-data');
 let currentGameIndex = 0;
 
-var loading = {};
-var inGame = false;
+let loading = {};
+let inGame = false;
 
 /* Gamepad support. Tested only on Xbox 360 controllers. */
 
 // use: http://html5gamepad.com/ to test and determine your controller ids
 
-var GamepadController = require('gamepadcontroller');
+let GamepadController = require('gamepadcontroller');
 const gamepad1 = new GamepadController(0);
 
 gamepad1.onButtonRelease(gamesData.select_button_id, (e) => {
@@ -95,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let games = Mustache.render(
         "{{#games}}" +
         "<div class='game' id='{{id}}'>" +
-        " <img class='game_cover' src='{{path}}/cover.png'>" +
+        " <img class='game_cover' src='{{cover_path}}'>" +
         " <h2 class='game_name'>{{name}}</h2>" +
         " <p class='game_info' > {{info}}</p>" +
         " <p class='start'>Jogar</p>" +

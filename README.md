@@ -1,10 +1,12 @@
 # SAL - Simple Arcade Launcher
 
-**SAL** is an arcade launcher to help people to run games at arcades. It's meant to be an easily configurable application, through an external JSON file. It is basically a shell that shows a game's cover image, title, and some info and which can run it. It supports input from gamepads (only XBox 360 have been tested), keyboard and mouse.
+**SAL** is an arcade launcher / menu to help people to run small collections of games at arcades. It's designed to be configurable through an external JSON file without recompilation. **SAL**'s basically a menu that shows a game's cover image, title, and info as defined in the JSON file, so players can choose and play. It supports input from gamepads (only XBox 360 have been tested), keyboard and mouse. It has been tested with Unity game builds without issues.
+
+![](docs/imgs/example.gif)
 
 ## How to configure
 
-All the configurable information is defined at the `config.json` file (example below), stored in the `AppData\Roaming\Simple Arcade Launcher\storage` folder. To show this file in Explorer, you can press `Ctrl+C` while running SAL. Edit the file with your information and then run SAL again. You should be able to run your games via the launcher now.
+All the configurable information is defined at the `config.json` file (example below), stored in the `AppData\Roaming\Simple Arcade Launcher\storage` folder. To get to this file quickly in Explorer, you can press `Ctrl+C` while running **SAL**: it'll open the config file's folder. Edit the file with your arcade's information and then re-run **SAL**. You should be able to run your games via the launcher now.
 
 ```json
 {
@@ -24,7 +26,8 @@ All the configurable information is defined at the `config.json` file (example b
             "id": "game_unique_id",
             "name": "Example game",
             "info": "Any info you want.",
-            "path": "an_absolute_path"
+            "exec_path": "an_absolute_path_to_the_game_executable_file.exe",
+            "cover_path": "an_absolute_path_to_the_game_cover.png"
         }
     ]
 }
