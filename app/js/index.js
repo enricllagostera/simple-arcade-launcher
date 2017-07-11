@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         " <img class='game_cover' src='{{cover_path}}'>" +
         " <h2 class='game_name'>{{name}}</h2>" +
         " <p class='game_info' > {{info}}</p>" +
-        " <p class='start'>Jogar</p>" +
+        " <p class='start'>play</p>" +
         "</div>" +
         "{{/games}}",
         gamesData);

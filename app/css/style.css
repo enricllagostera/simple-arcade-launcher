@@ -73,32 +73,45 @@ div.game h2.game_name {
 
 div.game p.game_info {
     position: absolute;
-    left: 486px;
+    left: 453px;
     top: 216px;
     width: 385px;
+    padding: 12px 0px 12px 36px;
+    background-color: #fff;
+    z-index: -1;
+    border:solid black 2px;
+    border-width:0px 7px 7px 0px;
+    z-index: 5;
 }
 
 div.game p.start {
   position: absolute;
   bottom: 75px;
-  left: 486px;
+  left: 470px;
   display: block;
   background-color: black;
   color: white;
-  font-size: 24px;
+  font-size: 36px;
+  text-transform: lowercase;
   font-family: 'Open Sans Black', cursive;
   text-align: center;
-  border-radius: 6px;
-  width: 80px;
-  padding: 4px 6px 8px 6px;
+  /*border-radius: 6px;*/
+  width: 100px;
+  padding: 6px 8px 14px 8px;
   cursor: pointer; 
   border: none;
+  border:solid white 2px;
+  border-width:0px 7px 7px 0px;
+  z-index: 5;
 }
 
 div.game img.game_cover {
   position: absolute;
   top:37.5px;
   width: 450px;
+  border: solid black 3px;
+  border-width: 0px 20px 20px 0px;
+  z-index: 10;
 }
 
 div#loading {
@@ -112,7 +125,7 @@ div#loading {
   height: 636px;
   color: white;
   line-height: 636px;
-  /*display: none;*/
+  display: none;
 }
 
 div#loading p {
