@@ -1,0 +1,25 @@
+{
+  "name": "arcade-launcher",
+  "version": "0.0.1",
+  "description": "A simple and configurable arcade launcher aimed at Unity games in Windows.",
+  "productName": "Simple Arcade Launcher",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "mocha",
+    "package-win": "electron-packager . --overwrite --asar=false --platform=win32 --arch=ia32 --prune=true"
+  },
+  "author": "Enric Llagostera",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.6.11",
+    "electron-debug": "^1.2.0",
+    "electron-packager": "^8.7.2"
+  },
+  "dependencies": {
+    "animejs": "^2.0.2",
+    "electron-json-storage": "^3.0.6",
+    "gamepadcontroller": "^1.0.1",
+    "mustache": "^2.3.0"
+  }
+}

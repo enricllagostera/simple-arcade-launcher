@@ -1,0 +1,28 @@
+{
+    "arcade_name": "Arcade da PUC-Campinas",
+    "bg_color": "#fc0",
+    "bg_url": "C:/Sinc/Jogos/DueloFantasma/fundo.png",
+    "select_button_id": 0,
+    "exit_button_id": 1,
+    "stick_index": 0,
+    "games": [
+        {
+            "id": "DueloFantasma",
+            "name": "Duelo Fantasma",
+            "info": "Enric Llagostera e Marcelo Silva",
+            "path": "C:/Sinc/Jogos/DueloFantasma"
+        },
+        {
+            "id": "DueloFantasma2",
+            "name": "Duelo Fantasma 2",
+            "info": "Enric Llagostera e Marcelo Silva",
+            "path": "C:/Sinc/Jogos/DueloFantasma"
+        },
+        {
+            "id": "DueloFantasma3",
+            "name": "Duelo Fantasma 3",
+            "info": "Enric Llagostera e Marcelo Silva",
+            "path": "C:/Sinc/Jogos/DueloFantasma"
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+/* FONTS */
+
+@font-face {
+  font-family: 'Bungee';
+  src: url('../fonts/Bungee/Bungee-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Light';
+  src: url('../fonts/Open_Sans/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Black';
+  src: url('../fonts/Open_Sans/OpenSans-ExtraBold.ttf');
+}
+
+/* end-fonts*/
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fc0;
+  font-family: 'Open Sans Light', cursive;
+  font-size: 24px;
+  line-height: 36px;
+  width: 100%;
+  margin: 0 auto; 
+  overflow: hidden;
+}
+
+h1 {
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  line-height: 36px;
+  
+}
+
+/* GAME */
+
+div.game {
+  position: absolute;
+  width: 900px;
+  height: 436px;
+  left: 190px;
+  top:60px;
+  /* background-color: rgba(255, 255, 255, 0.7); */
+}
+
+div.game h2.game_name {
+  position: absolute;
+  left: 436px;
+  top: 45px;
+  width: 390px;
+  font-size: 54px;
+  font-family: 'Open Sans Black', cursive;
+  line-height: 54px;
+}
+
+div.game p.game_info {
+    position: absolute;
+    left: 440px;
+    top: 216px;
+    width: 385px;
+}
+
+div.game p.start {
+  position: absolute;
+  bottom: 54px;
+  left: 440px;
+  display: block;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  font-family: 'Open Sans Black', cursive;
+  text-align: center;
+  border-radius: 6px;
+  width: 80px;
+  padding: 4px 6px 8px 6px;
+  cursor: pointer; 
+  border: none;
+}
+
+div.game img.game_cover {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 400px;
+}
+
+div#loading {
+  background-color: black;
+  position: absolute;
+  top:0;
+  left:0;
+  font-size: 48px;
+  text-align: center;
+  width: 1200px;
+  height: 636px;
+  color: white;
+  line-height: 636px;
+}
+
+div#loading p {
+  display: block;
+}
