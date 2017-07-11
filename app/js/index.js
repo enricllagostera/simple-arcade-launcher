@@ -4,6 +4,7 @@ const anime = require('animejs');
 
 let gamesData = ipcRenderer.sendSync('load-games-data');
 let currentGameIndex = 0;
+const posGameX = (gamesData.screen_width - 900) / 2;
 
 let loading = {};
 let inGame = false;
@@ -74,6 +75,8 @@ gamepad1.onStickMove(gamesData.stick_index, (state) => {
 
 // when DOM is finally loaded
 document.addEventListener("DOMContentLoaded", function (event) {
+    document.querySelector('#arcade_name').textContent = gamesData.arcade_name;
+
     //console.log(navigator.getGamepads());
     document.querySelector('#loading').setAttribute("style", "width: " + gamesData.screen_width +
         "px; line-height: " + gamesData.screen_height +
@@ -102,13 +105,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
         gamesData);
 
     // move each game's info to their proper starting position
-    document.querySelector('#allGames').innerHTML = games;
+    document.querySelector('#all_games').innerHTML = games;
+    document.querySelector('#all_games').setAttribute("style", "margin-top:" + ((gamesData.screen_height - 550) / 2 - 20) + "px;");
+
     var allGameElements = document.querySelectorAll('div.game');
     for (let i = 0; i < allGameElements.length; i++) {
         let element = allGameElements[i];
         element.setAttribute("style", "left: 9999px;");
         if (i == 0) {
-            element.setAttribute("style", "left: 150px;");
+            element.setAttribute("style", "left:" + posGameX + "px;");
         }
     }
 
@@ -203,14 +208,14 @@ function ChangeInfoOnDisplay(oldIndex, newIndex, direction) {
 
     anime({
         targets: oldElement,
-        left: [150, finalOld],
+        left: [posGameX, finalOld],
         duration: 700,
         easing: 'easeInOutBack'
     });
 
     anime({
         targets: newElement,
-        left: [initNew, 150],
+        left: [initNew, posGameX],
         delay: 100,
         duration: 700,
         easing: 'easeInOutBack'

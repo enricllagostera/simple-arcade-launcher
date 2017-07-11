@@ -24,7 +24,7 @@
 }
 
 body {
-  background-color: #000;
+  background-color: #fc0;
   font-family: 'Open Sans Light', cursive;
   font-size: 24px;
   line-height: 36px;
@@ -43,20 +43,27 @@ h1 {
   line-height: 36px;
 }
 
+div#all_games {
+  width: 100%;
+  height: 550px;
+  /*background-color: red;*/
+  margin-top:0;
+}
+
 /* GAME */
 
 div.game {
   position: absolute;
   width: 900px;
-  height: 436px;
-  left: 190px;
-  top:60px;
-  /* background-color: rgba(255, 255, 255, 0.7); */
+  height: 550px;
+  margin: 0px auto;
+  left: 62px;
+  /*background-color: rgba(255, 255, 255, 0.7);*/
 }
 
 div.game h2.game_name {
   position: absolute;
-  left: 436px;
+  left: 486px;
   top: 45px;
   width: 390px;
   font-size: 54px;
@@ -66,15 +73,15 @@ div.game h2.game_name {
 
 div.game p.game_info {
     position: absolute;
-    left: 440px;
+    left: 486px;
     top: 216px;
     width: 385px;
 }
 
 div.game p.start {
   position: absolute;
-  bottom: 54px;
-  left: 440px;
+  bottom: 75px;
+  left: 486px;
   display: block;
   background-color: black;
   color: white;
@@ -90,9 +97,8 @@ div.game p.start {
 
 div.game img.game_cover {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  width: 400px;
+  top:37.5px;
+  width: 450px;
 }
 
 div#loading {
@@ -106,6 +112,7 @@ div#loading {
   height: 636px;
   color: white;
   line-height: 636px;
+  /*display: none;*/
 }
 
 div#loading p {
