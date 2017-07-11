@@ -36,7 +36,9 @@ app.on('ready', () => {
             height: gamesData.screen_height,
             backgroundColor: gamesData.bg_color,
             fullscreen: gamesData.is_fullscreen,
-            autoHideMenuBar: true
+            fullscreenable: gamesData.is_fullscreen,
+            autoHideMenuBar: true,
+            resizable: false
         });
 
         // open arcade window
