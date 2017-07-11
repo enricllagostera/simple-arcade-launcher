@@ -24,7 +24,8 @@
 }
 
 body {
-  background-color: #fc0;
+  background: #fc0 no-repeat fixed center;
+  background-size: cover; 
   font-family: 'Open Sans Light', cursive;
   font-size: 24px;
   line-height: 36px;
@@ -73,10 +74,10 @@ div.game h2.game_name {
 
 div.game p.game_info {
     position: absolute;
-    left: 453px;
+    left: 420px;
     top: 216px;
-    width: 385px;
-    padding: 12px 0px 12px 36px;
+    width: 440px;
+    padding: 12px 0px 12px 75px;
     background-color: #fff;
     z-index: -1;
     border:solid black 2px;
@@ -87,7 +88,7 @@ div.game p.game_info {
 div.game p.start {
   position: absolute;
   bottom: 75px;
-  left: 470px;
+  left: 420px;
   display: block;
   background-color: black;
   color: white;
@@ -96,8 +97,8 @@ div.game p.start {
   font-family: 'Open Sans Black', cursive;
   text-align: center;
   /*border-radius: 6px;*/
-  width: 100px;
-  padding: 6px 8px 14px 8px;
+  width: 140px;
+  padding: 6px 4px 14px 40px;
   cursor: pointer; 
   border: none;
   border:solid white 2px;

@@ -177,6 +177,8 @@ function ChooseGame() {
             ipcRenderer.send('start-game', currentGameIndex); // prints "pong"
         }
     });
+
+
 }
 
 function ChangeCurrentGameIndex(indexMod) {
@@ -219,5 +221,23 @@ function ChangeInfoOnDisplay(oldIndex, newIndex, direction) {
         delay: 100,
         duration: 700,
         easing: 'easeInOutBack'
+    });
+
+    anime({
+        targets: '.game_name',
+        translateX: [60, 0],
+        duration: 3500
+    });
+
+    anime({
+        targets: '.game_info',
+        translateX: [80, 0],
+        duration: 3000
+    });
+
+    anime({
+        targets: '.start',
+        translateX: [40, 0],
+        duration: 3200
     });
 }
