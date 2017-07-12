@@ -1,5 +1,7 @@
 # Simple Arcade Launcher - SAL
 
+<img src="docs/imgs/icon.png" style="width:64px; float: left; margin: 4px 20px;" />
+
 **SAL** is an arcade launcher / menu to help people to run small collections of games at arcades. It's designed to be configurable through an external JSON file without recompilation. **SAL**'s basically a menu that shows a game's cover image, title, and info as defined in the JSON file, so players can choose and play. It supports input from gamepads (only Xbox 360 controllers have been tested), keyboard and mouse. It has been tested with Unity game builds without issues.
 
 ### Features

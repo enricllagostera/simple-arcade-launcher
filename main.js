@@ -7,6 +7,7 @@ const { Menu } = require('electron');
 const { shell } = require('electron');
 // require('electron-debug')({ showDevTools: true });
 const { execFile } = require('child_process');
+const path = require('path');
 
 var mainWindow = null;
 var gamesData = {};
@@ -29,7 +30,7 @@ app.on('ready', () => {
             storage.set('config', data);
         }
         gamesData = data;
-
+        console.log(path.join(__dirname, 'app/img/icon.png'));
         // main window setup
         mainWindow = new BrowserWindow({
             width: gamesData.screen_width,
@@ -38,7 +39,8 @@ app.on('ready', () => {
             fullscreen: gamesData.is_fullscreen,
             fullscreenable: gamesData.is_fullscreen,
             autoHideMenuBar: true,
-            resizable: false
+            resizable: false,
+            icon: path.join(__dirname, 'app/img/icon.png')
         });
 
         // open arcade window
