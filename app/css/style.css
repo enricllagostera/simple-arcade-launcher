@@ -133,3 +133,35 @@ div#loading {
 div#loading p {
   display: block;
 }
+
+div.btn {
+  position: absolute;
+  bottom: 10%;
+  display: block;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  text-transform: lowercase;
+  font-family: 'Open Sans Black', cursive;
+  text-align: center;
+  /*border-radius: 6px;*/
+  width: 60px;
+  padding: 6px 4px 8px 4px;
+  cursor: pointer; 
+  border: none;
+  border:solid white 2px;
+  border-width:0px 7px 7px 0px;
+}
+
+div#btn_left {
+  left: 0px;
+}
+
+div#btn_right {
+  right: 0px;
+  border-width:0px 0px 7px 7px;
+}
+
+div.btn p {
+  display: block;
+}

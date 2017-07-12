@@ -134,6 +134,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
         ChooseGame();
     });
 
+    document.querySelector('#btn_left').addEventListener('click', () => {
+        if (inGame) {
+            return;
+        }
+        ChangeCurrentGameIndex(-1);
+    });
+
+    document.querySelector('#btn_right').addEventListener('click', () => {
+        if (inGame) {
+            return;
+        }
+        ChangeCurrentGameIndex(1);
+    });
+
     // handle keyboard changes, mostly for debug comfort
     document.addEventListener('keydown', (event) => {
         if (inGame) {
