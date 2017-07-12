@@ -51,7 +51,7 @@ app.on('window-all-closed', () => {
     app.quit();
 });
 
-// make sure the app quits
+// make sure the app quits 
 app.on('close-app', (arg) => {
     app.quit();
 });
