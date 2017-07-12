@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "test": "mocha",
-    "package-win": "electron-packager . --overwrite --asar=false --platform=win32 --arch=ia32 --prune=true"
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --icon=app/img/favicon.ico"
   },
   "author": "Enric Llagostera",
   "license": "MIT",
