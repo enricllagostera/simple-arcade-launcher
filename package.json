@@ -20,7 +20,6 @@
     "animejs": "^2.0.2",
     "electron-json-storage": "^3.0.6",
     "gamepadcontroller": "^1.0.1",
-    "howler": "^2.0.4",
     "mustache": "^2.3.0"
   }
 }
