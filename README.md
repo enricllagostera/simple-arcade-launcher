@@ -21,7 +21,7 @@
 
 The reason behind using JSON files for the configuration is their readability and ease to edit (you just need a plain text editor like notepad). Then, you can keep several config files and switch between them just by renaming, so it's easy to have several different arcades ready with their own lists of games, sound and visuals.
 
-![](docs/imgs/example.gif)
+![](docs/imgs/example-social.gif)
 
 ### How to configure
 
