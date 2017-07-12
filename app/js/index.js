@@ -75,6 +75,15 @@ gamepad1.onStickMove(gamesData.stick_index, (state) => {
 
 // when DOM is finally loaded
 document.addEventListener("DOMContentLoaded", function (event) {
+    // sets up the audio file conncetions
+    document.querySelector("#audio_change").setAttribute("src", gamesData.sfx_change_game);
+    document.querySelector("#audio_start").setAttribute("src", gamesData.sfx_start_game);
+    document.querySelector("#audio_music").setAttribute("src", gamesData.music_menu);
+    document.querySelector("#audio_change").load();
+    document.querySelector("#audio_start").load();
+    document.querySelector("#audio_music").load();
+    PlaySound("#audio_music", true);
+
     document.querySelector('#arcade_name').textContent = gamesData.arcade_name;
 
     //console.log(navigator.getGamepads());
@@ -152,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     // after a game finishes, unblock inputs
     ipcRenderer.on('game-finished', () => {
+        PlaySound("#audio_music", true);
         inGame = false;
         console.log("back to menu " + inGame);
         anime({
@@ -165,6 +175,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function ChooseGame() {
+    // pause music
+    document.querySelector("#audio_music").pause();
+    // play SFX
+    PlaySound("#audio_start", false);
     // this is used to block inputs
     inGame = true;
     // send a message to the main process when loading appears
@@ -196,7 +210,14 @@ function ChangeCurrentGameIndex(indexMod) {
     ChangeInfoOnDisplay(old, currentGameIndex, indexMod);
 }
 
+function PlaySound(id, loop) {
+    document.querySelector(id).loop = loop;
+    document.querySelector(id).play();
+}
+
 function ChangeInfoOnDisplay(oldIndex, newIndex, direction) {
+    // play SFX
+    PlaySound("#audio_change", false);
     let oldElement = document.querySelector('#' + gamesData.games[oldIndex].id);
     let newElement = document.querySelector('#' + gamesData.games[newIndex].id);
 

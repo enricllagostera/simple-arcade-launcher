@@ -126,7 +126,8 @@ div#loading {
   height: 636px;
   color: white;
   line-height: 636px;
-  display: none;
+  /*display: none;*/
+  z-index: 20;
 }
 
 div#loading p {
