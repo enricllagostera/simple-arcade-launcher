@@ -51,7 +51,7 @@ app.on('window-all-closed', () => {
     app.quit();
 });
 
-// make sure the app quits
+// make sure the app quits 
 app.on('close-app', (arg) => {
     app.quit();
 });
@@ -128,13 +128,16 @@ function exampleConfigFile() {
         "screen_width": 1200,
         "screen_height": 650,
         "is_fullscreen": false,
+        "sfx_change_game": "an_absolute_path_to_audio_file.wav",
+        "sfx_start_game": "an_absolute_path_to_audio_file.wav",
+        "music_menu": "an_absolute_path_to_audio_file.ogg",
         "games": [
             {
                 "id": "game_unique_id",
                 "name": "Example game",
                 "info": "Any info you want.",
                 "exec_path": "an_absolute_path_to_executable",
-                "cover_path": "an_absolute_path_to_cover"
+                "cover_path": "an_absolute_path_to_cover",
             }
         ]
     };
